@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,12 +25,13 @@ public class ToDoController {
 	//toDo.html
 	@GetMapping("/{categoryId}")
 	public String index(
-			@PathVariable("categoryId") Integer categoryId
-			) {
-		List<ToDo> todoList = this.toDoRepository.findById(categoryId).get();
-		for(int i = 0; i > todoList.size(); i++) {
+			@PathVariable("categoryId") Integer categoryId,
+			Model model) {
+		List<ToDo> todoList = this.toDoRepository.findByCategoryId(categoryId);
+		for(int i = 0; i < todoList.size(); i++) {
 			System.out.println(todoList.get(i).getName());
 		}
+		model.addAttribute("todoList", todoList);
 		return "todo/toDo";
 	}
 
