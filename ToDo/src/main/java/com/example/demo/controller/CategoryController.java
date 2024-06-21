@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CategoryController {
@@ -15,20 +16,23 @@ public class CategoryController {
 		return "category/addCategory";
 	}
 
+	@PostMapping("/category/add")
 	public String store() {
-		return "index";
+		return "redirect:/todo/{categolyId}";
 	}
+
 	@GetMapping("/category/{categoryId}/edit")
 	public String edit() {
 		return "editCategory";
 	}
 
+	@PostMapping("/category/{categoryId}/edit")
 	public String update() {
-		return "index";
+		return "redirect:/todo/{categoryId}";
 	}
-
+@PostMapping("/category/{categoryId}/delete")
 	public String delete() {
-		return "index";
+		return "redirect:/category";
 	}
 
 	@GetMapping("/back")
