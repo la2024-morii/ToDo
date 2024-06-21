@@ -17,7 +17,7 @@ public class ToDo {
 	private Integer todoId;
 	
 	@Column(name = "todo_name")
-	private String Name;
+	private String name;
 	
 	@Column(name = "category_id")
 	private Integer categoryId;
@@ -31,17 +31,17 @@ public class ToDo {
 
 	public ToDo(String name, Integer categoryId, Integer checkId) {
 		super();
-		Name = name;
+		this.name = name;
 		this.categoryId = categoryId;
 		this.checkId = checkId;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public Integer getCategoryId() {

@@ -8,6 +8,26 @@
 
 <body>
 	<h1>ToDo一覧</h1>
+	
+	<p>カテゴリー名</p>
+	<br>
+	<table>
+		<tr>
+			<td>リストの中身</td>
+			
+			<form action="/todo/{categoryId}/{toDoId}/edit/">	
+			<td><button>編集</button></td>
+			</form>
+			
+			<form action="/todo/{categoryId}/{toDoId}/delete" method="post">
+			<td><button>削除</button></td>
+			</form>
+		</tr>
+	</table>
+	<br>
+	<form action="todo/{categoryId}/add">	
+	<button>ToDoの追加</button>
+	</form>
 
 </body>
 
