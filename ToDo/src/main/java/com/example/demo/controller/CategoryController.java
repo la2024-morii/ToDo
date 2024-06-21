@@ -20,8 +20,8 @@ public class CategoryController {
 	
 	@GetMapping("/category")
 	public String index(Model model) {
-		List<Category> CategoryList = categoryRepository.findAll();
-		model.addAttribute("CategoryList", CategoryList);
+		List<Category> categoryList = categoryRepository.findAll();
+		model.addAttribute("categoryList", categoryList);
 		return "category/category";
 	}
 
