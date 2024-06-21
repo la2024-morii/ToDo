@@ -22,13 +22,11 @@ public class ToDoController {
 	//[GET]"/todo/{categoryId}/"
 	//index()
 	//toDo.html
-	@GetMapping("/{categolyId}")
+	@GetMapping("/{categoryId}")
 	public String index(
-			@PathVariable("categoryId") Integer categoryId,
-			//@RequestParam("categoryName")String categoryName,
-			@RequestParam("name")String name,
-			@RequestParam("todoId")Integer todoId) {
-		List<ToDo> todoList = this.toDoRepository.findAll();
+			@PathVariable("categoryId") Integer categoryId
+			) {
+		List<ToDo> todoList = this.toDoRepository.findById(categoryId).get();
 		for(int i = 0; i > todoList.size(); i++) {
 			System.out.println(todoList.get(i).getName());
 		}
