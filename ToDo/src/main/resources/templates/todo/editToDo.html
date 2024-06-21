@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>editToDo</title>
+</head>
+<body>
+	<h1>ToDoの編集</h1>
+	<form action="/todo/{categortId}/{todoId}/edit" method="post">
+		
+	<p><input type="text" name="name"></p>
+	<button>編集</button>
+	</form>
+	
+	<br>
+	<a href="/todo/{categoryId}">戻る</a>
+</body>
+</html>
