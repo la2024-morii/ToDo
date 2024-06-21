@@ -52,8 +52,7 @@ public class CategoryController {
 
 	@PostMapping("/category/{categoryId}/edit")
 	public String update(
-			//@PathVariable("categoryId") Integer categoryId,
-			//Model model
+			
 			) {
 		//Category category = categoryRepository.findById(categoryId).get();
 		//String name =category.getCategoryName();
