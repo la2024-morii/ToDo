@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CategoryController {
 	@GetMapping("/category")
 	public String index() {
-		return "category";
+		return "category/category";
 	}
 
 	@GetMapping("/category/add")
 	public String create() {
-		return "addCategory";
+		return "category/addCategory";
 	}
 
 	public String store() {
