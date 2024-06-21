@@ -6,5 +6,28 @@
 </head>
 <body>
 <h1>カテゴリ一覧</h1>
+<a href="/category/add">新規カテゴリー追加</a>
+<br><br>
+<table>
+	<tr th:each="category:${categoryList}">
+		<td>
+			<form th:action="@{/todo/{categoryId}(categoryId=${category.getCategoryId()})}" method="get">
+				<button>
+					<span th:text="${category.getCategoryName()}"></span>
+				</button>
+			</form>
+		</td>
+		<td>
+			<form th:action="@{/category/{categoryId}/edit(categoryId=${category.getCategoryId()})}" method="get">
+				<button>編集</button>
+			</form>
+		</td>
+		<td>
+			<form th:action="@{/category/{categoryId}/delete(categoryId=${category.getCategoryId()})}" method="post">
+				<button>削除</button>
+			</form>
+		</td>
+	</tr>
+</table>
 </body>
 </html>
