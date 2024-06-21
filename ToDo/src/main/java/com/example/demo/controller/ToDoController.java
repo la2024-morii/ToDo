@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,18 +10,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.ToDo;
+import com.example.demo.repository.ToDoRepository;
+
 @Controller
 @RequestMapping("/todo")
 public class ToDoController {
+	@Autowired
+	ToDoRepository toDoRepository;
+	
 	//[GET]"/todo/{categoryId}/"
 	//index()
 	//toDo.html
 	@GetMapping("/{categolyId}")
 	public String index(
 			@PathVariable("categoryId") Integer categoryId,
-			@RequestParam("categoryName")String categoryName,
+			//@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name,
 			@RequestParam("todoId")Integer todoId) {
+		List<ToDo> todoList = this.toDoRepository.findAll();
+		for(int i = 0; i > todoList.size(); i++) {
+			System.out.println(todoList.get(i).getName());
+		}
 		return "todo/toDo";
 	}
 
