@@ -12,8 +12,9 @@
 	<p>カテゴリー名</p>
 	<br>
 	<table>
-		<tr>
-			<td>リストの中身</td>
+		<tr th:each="todo : ${todoList}">
+			<td><input type="checkbox" name="checkId" value=""></td>
+			<td th:text="${todo.getName()}"></td>
 			
 			<form action="/todo/{categoryId}/{toDoId}/edit/">	
 			<td><button>編集</button></td>
@@ -28,6 +29,8 @@
 	<form action="todo/{categoryId}/add">	
 	<button>ToDoの追加</button>
 	</form>
+	
+	
 
 </body>
 
