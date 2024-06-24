@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ public class ToDo {
 	
 	@Column(name = "check_id")
 	private Integer checkId;
+	
+	@OneToOne
+	@JoinColumn(name = "category_id", insertable = false, updatable = false)
+	private Category category;
 	
 	public ToDo() {
 		
@@ -63,6 +69,9 @@ public class ToDo {
 	public Integer getTodoId() {
 		return todoId;
 	}
+	public String getCategoryName() {
+		return this.category.getCategoryName();
+		}
 	
 	
 
