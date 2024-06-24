@@ -58,8 +58,10 @@ public class ToDoController {
 
 	@GetMapping("todo/{categoryId}/add")
 	public String create(
-			@PathVariable("categoryId")Integer categoryId
+			@PathVariable("categoryId")Integer categoryId,
+			Model model
 			) {
+		model.addAttribute("categoryId", categoryId);
 		return "todo/addToDo";
 	}
 
