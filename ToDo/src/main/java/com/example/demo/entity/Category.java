@@ -1,10 +1,14 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +22,10 @@ public class Category {
 	
 	@Column(name = "category_name")
 	private String categoryName;
+	
+	@OneToMany
+	@JoinColumn(name = "todo_id", insertable = false, updatable = false)
+	private List<ToDo> todoList;
 
 	public Category() {
 		
@@ -42,6 +50,9 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	public List<ToDo> getToDoName() {
+		return this.todoList;
 	}
 
 }
