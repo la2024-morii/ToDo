@@ -16,7 +16,7 @@
 			<td><input type="checkbox" name="checkId" value=""></td>
 			<td th:text="${todo.getName()}"></td>
 			
-			<form action="/todo/{categoryId}/{toDoId}/edit/">	
+			<form th:action="@{/todo/{categoryId}/{toDoId}/edit(categoryId=${todo.getCategoryId()}, toDoId=${todo.getTodoId()})}">	
 			<td><button>編集</button></td>
 			</form>
 			
