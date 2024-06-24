@@ -7,5 +7,8 @@
 <body>
 	<h1>完了リスト</h1>
 	<p th:each="todo : ${todoList}" th:text="${todo.getName()}"></p>
+	
+	<br>
+	<a th:href="@{/todo/{categoryId}(categoryId=${categoryId})}">戻る</a>
 </body>
 </html>
