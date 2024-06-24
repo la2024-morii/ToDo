@@ -97,6 +97,8 @@ public class ToDoController {
 	public String delete(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId) {
+		
+		this.toDoRepository.deleteById(todoId);
 		return "redirect:/todo/{categoryId}";
 	}
 	//[GET]"/todo/{categoryId}/complete"
@@ -104,10 +106,11 @@ public class ToDoController {
 	//completeToDo.html
 	@GetMapping("/{categoryId}/complete")
 	public String complete(
-			@PathVariable("categoryId")Integer categoryId,
-			@RequestParam("categoryName")String categoryName,
-			@RequestParam("name") String name,
-			@RequestParam("todoId")Integer todoId) {
+			@PathVariable("categoryId")Integer categoryId
+//			@RequestParam("categoryName")String categoryName,
+//			@RequestParam("name") String name,
+//			@RequestParam("todoId")Integer todoId
+			) {
 		return "todo/completeToDo";
 	}
 
