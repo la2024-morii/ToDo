@@ -32,7 +32,10 @@
 	<form th:action="@{/todo/{categoryId}/add(categoryId=${categoryId})}">	
 	<button>ToDoの追加</button>
 	</form>
+	<br>
+	<a th:href="@{/todo/{categoryId}/complete(categoryId=${categoryId})}">完了リスト</a>
 	
+	<a href="/category">戻る</a>
 	
 	
 	
