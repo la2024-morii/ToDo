@@ -7,11 +7,10 @@
 <body>
 <h1>ToDo追加</h1>
 
-	<form action="todo/{categoryId}/add" method="post">
+	<form th:action="@{/todo/{categoryId}/add(categoryId=${categoryId})}" method="post">
 		
 	<table>
-		<tr>
-			<td><input type="text" name="name"></td>
+		<tr><td><input type="text" name="name"></td>
 		</tr>
   	</table>
   	<br>
