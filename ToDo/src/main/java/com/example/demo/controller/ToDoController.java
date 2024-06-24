@@ -106,11 +106,14 @@ public class ToDoController {
 	//completeToDo.html
 	@GetMapping("/{categoryId}/complete")
 	public String complete(
-			@PathVariable("categoryId")Integer categoryId
+			@PathVariable("categoryId")Integer categoryId,
 //			@RequestParam("categoryName")String categoryName,
 //			@RequestParam("name") String name,
-//			@RequestParam("todoId")Integer todoId
-			) {
+//			@RequestParam("todoId")Integer todoId,
+			Model model) {
+		
+		List<ToDo> todoList = this.toDoRepository.findByCategoryIdAndCheckId(categoryId, 2);
+		model.addAttribute("todoList", todoList);
 		return "todo/completeToDo";
 	}
 

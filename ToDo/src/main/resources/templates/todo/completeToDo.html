@@ -6,5 +6,6 @@
 </head>
 <body>
 	<h1>完了リスト</h1>
+	<p th:each="todo : ${todoList}" th:text="${todo.getName()}"></p>
 </body>
 </html>
