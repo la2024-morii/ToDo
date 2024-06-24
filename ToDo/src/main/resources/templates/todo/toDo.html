@@ -9,7 +9,7 @@
 <body>
 	<h1>ToDo一覧</h1>
 	
-	<p>カテゴリー名</p>
+	<p th:text="${categoryName}"></p>
 	<br>
 	<table>
 		<tr th:each="todo : ${todoList}">
