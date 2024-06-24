@@ -8,8 +8,8 @@
 
 <body>
 	<h1>カテゴリー追加</h1>
-	<form>
-		<input type="text" th:value="${name}">
+	<form th:action="@{/category/{categoryId}/edit(categoryId=${category.getCategoryId()})}" method="post">
+		<input type="text" th:value="${category.getCategoryName()}" name="newName">
 		<br>
 		<button>編集</button>
 	</form>
