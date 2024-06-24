@@ -59,6 +59,8 @@ public class ToDoController {
 			@PathVariable("categoryId")Integer categoryId,
 			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
+		ToDo todo = new ToDo(name, categoryId, 1);
+		this.toDoRepository.save(todo);
 		return "redirect:/{categoryId}";
 	}
 
@@ -80,8 +82,7 @@ public class ToDoController {
 			@PathVariable("todoId")Integer todoId,
 			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
-		ToDo todo = new ToDo(name, categoryId, 1);
-		this.toDoRepository.save(todo);
+		
 		return "redirect:/{categoryId}";
 
 	}
