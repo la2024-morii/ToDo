@@ -25,20 +25,21 @@ public class CategoryController {
 		return "category/category";
 	}
 
-
 	@GetMapping("/category/{categoryId}/edit")
-	public String edit(@PathVariable("categoryId") Integer categoryId,
+	public String edit(
+			@PathVariable("categoryId") Integer categoryId,
 			Model model) {
 		Category category = categoryRepository.findById(categoryId).get();
-		String name =category.getCategoryName();
+		String name = category.getCategoryName();
 		model.addAttribute("name", name);
-		return "editCategory";
+
+		return "category/editCategory";
 	}
 
 	@PostMapping("/category/{categoryId}/edit")
 	public String update(
-			
-			) {
+
+	) {
 		//Category category = categoryRepository.findById(categoryId).get();
 		//String name =category.getCategoryName();
 		//model.addAttribute("categoryId", categoryId);

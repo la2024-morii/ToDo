@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>カテゴリー編集</title>
+	<meta charset="UTF-8">
+	<title>カテゴリー追加</title>
 </head>
+
 <body>
-	
-<h1>カテゴリー編集</h1>
-
-
+	<h1>カテゴリー追加</h1>
+	<form>
+		<input type="text" th:value="${name}">
+		<br>
+		<button>編集</button>
+	</form>
 </body>
+
 </html>
