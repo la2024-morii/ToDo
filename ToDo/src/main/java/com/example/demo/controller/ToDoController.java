@@ -25,12 +25,24 @@ public class ToDoController {
 	public String index(
 			@PathVariable("categoryId") Integer categoryId,
 			Model model) {
-		List<ToDo> todoList = this.toDoRepository.findByCategoryId(categoryId);
-		for(int i = 0; i < todoList.size(); i++) {
-			System.out.println(todoList.get(i).getName());
-		}
-		model.addAttribute("todoList", todoList);
+		
+		
+		try {
+			List<ToDo> todoList = this.toDoRepository.findByCategoryId(categoryId);
+			String categoryName = todoList.get(0).getCategoryName();
+			for(int i = 0; i < todoList.size(); i++) {
+				System.out.println(todoList.get(i).getName());
+			}
+			model.addAttribute("todoList", todoList);
+			model.addAttribute("categoryName", categoryName);
+		System.out.println(categoryName);
 		return "todo/toDo";
+		
+		}catch(IndexOutOfBoundsException e) {
+	
+
+			return "todo/toDo";
+		}
 	}
 
 	//[POST]"/{categoryId}/{todoId}/check"
@@ -104,11 +116,15 @@ public class ToDoController {
 	//completeToDo.html
 	@GetMapping("/todo/{categoryId}/complete")
 	public String complete(
-			@PathVariable("categoryId")Integer categoryId
+			@PathVariable("categoryId")Integer categoryId,
 //			@RequestParam("categoryName")String categoryName,
 //			@RequestParam("name") String name,
-//			@RequestParam("todoId")Integer todoId
-			) {
+//			@RequestParam("todoId")Integer todoId,
+			Model model) {
+		
+		List<ToDo> todoList = this.toDoRepository.findByCategoryIdAndCheckId(categoryId, 2);
+		model.addAttribute("todoList", todoList);
+		model.addAttribute("categoryId", categoryId);
 		return "todo/completeToDo";
 	}
 
