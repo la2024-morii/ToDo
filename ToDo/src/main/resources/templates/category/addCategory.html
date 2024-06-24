@@ -1,17 +1,21 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>カテゴリー追加</title>
+	<meta charset="UTF-8">
+	<title>カテゴリー追加</title>
 </head>
+
 <body>
-<h1>カテゴリー追加</h1>
-<a href="/back">戻る</a>
-<br><br>
-<form action="/category/add" method="post">
-	<input type="text" name="newCategoryName" placeholder="新規カテゴリー名">
-	<br>
-	<button>追加</button>
-</form>
+	<h1>カテゴリー追加</h1>
+	<a href="/back">戻る</a>
+	<br><br>
+	<form action="/category/add" method="post">
+		<input type="text" name="newCategoryWord" placeholder="新規カテゴリー名">
+		<br>
+		<button>追加</button>
+	</form>
 </body>
+
 </html>

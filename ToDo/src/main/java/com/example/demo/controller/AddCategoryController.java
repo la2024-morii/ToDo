@@ -25,9 +25,10 @@ public class AddCategoryController {
 	public String store(
 			@RequestParam("newCategoryWord") String newCategoryWord,
 			Model model) {
+		System.out.println(newCategoryWord);
 		Category category = new Category(newCategoryWord);
-		categoryRepository.save(category);
-
-		return "redirect:/todo/{categolyId}";
+		this.categoryRepository.save(category);
+		
+		return "redirect:/todo/" + category.getCategoryId();
 	}
 }

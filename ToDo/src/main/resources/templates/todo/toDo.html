@@ -16,11 +16,11 @@
 			<td><input type="checkbox" name="checkId" value="1" th:text="${todo.getName()}"></td>
 	
 			
-			<form th:action="@{/todo/{categoryId}/{toDoId}/edit(categoryId=${todo.getCategoryId()}, toDoId=${todo.getTodoId()})}">	
+			<form th:action="@{/todo/{categoryId}/{todoId}/edit(categoryId=${todo.getCategoryId()}, todoId=${todo.getTodoId()})}">	
 			<td><button>編集</button></td>
 			</form>
 			
-			<form action="/todo/{categoryId}/{toDoId}/delete" method="post">
+			<form th:action="@{/todo/{categoryId}/{todoId}/delete(categoryId=${todo.getCategoryId()}, todoId=${todo.getTodoId()})}" method="post">
 			<td><button>削除</button></td>
 			</form>
 		</tr>
@@ -32,7 +32,10 @@
 	<form th:action="@{/todo/{categoryId}/add(categoryId=${categoryId})}" method="get">	
 	<button>ToDoの追加</button>
 	</form>
+	<br>
+	<a th:href="@{/todo/{categoryId}/complete(categoryId=${categoryId})}">完了リスト</a>
 	
+	<a href="/category">戻る</a>
 	
 	
 	

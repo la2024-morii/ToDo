@@ -67,7 +67,11 @@ public class ToDoController {
 	@GetMapping("/todo/{categoryId}/{todoId}/edit")
 	public String edit(
 			@PathVariable("categoryId")Integer categoryId,
-			@PathVariable("todoId")Integer todoId) {
+			@PathVariable("todoId")Integer todoId,
+			Model model) {
+		
+		ToDo todo = this.toDoRepository.findById(todoId).get();
+		model.addAttribute("todo", todo);
 		return "todo/editToDo";
 	}
 
@@ -77,10 +81,11 @@ public class ToDoController {
 	public String update(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId,
-			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
+
 		
 		return "redirect:/{categoryId}";
+
 
 	}
 
@@ -90,17 +95,20 @@ public class ToDoController {
 	public String delete(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId) {
-		return "redirect:/{categoryId}";
+		
+		this.toDoRepository.deleteById(todoId);
+		return "redirect:/todo/{categoryId}";
 	}
 	//[GET]"/todo/{categoryId}/complete"
 	//	complrte()
 	//completeToDo.html
 	@GetMapping("/todo/{categoryId}/complete")
 	public String complete(
-			@PathVariable("categoryId")Integer categoryId,
-			@RequestParam("categoryName")String categoryName,
-			@RequestParam("name") String name,
-			@RequestParam("todoId")Integer todoId) {
+			@PathVariable("categoryId")Integer categoryId
+//			@RequestParam("categoryName")String categoryName,
+//			@RequestParam("name") String name,
+//			@RequestParam("todoId")Integer todoId
+			) {
 		return "todo/completeToDo";
 	}
 
