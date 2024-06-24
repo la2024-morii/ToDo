@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
 import com.example.demo.repository.CategoryRepository;
@@ -25,25 +26,25 @@ public class CategoryController {
 		return "category/category";
 	}
 
-
 	@GetMapping("/category/{categoryId}/edit")
-	public String edit(@PathVariable("categoryId") Integer categoryId,
+	public String edit(
+			@PathVariable("categoryId") Integer categoryId,
 			Model model) {
 		Category category = categoryRepository.findById(categoryId).get();
-		String name =category.getCategoryName();
-		model.addAttribute("name", name);
-		return "editCategory";
+		model.addAttribute("category", category);
+
+		return "category/editCategory";
 	}
 
 	@PostMapping("/category/{categoryId}/edit")
-	public String update(
-			
-			) {
-		//Category category = categoryRepository.findById(categoryId).get();
-		//String name =category.getCategoryName();
-		//model.addAttribute("categoryId", categoryId);
-		//model.addAttribute("name", name);
-		return "redirect:/todo/{categoryId}";
+	public String update(@PathVariable("categoryId") Integer categoryId,
+			@RequestParam("newName") String newName) {
+		Category category = categoryRepository.findById(categoryId).get();
+		category.setCategoryName(newName);
+		categoryRepository.save(category);
+		
+		
+		return "redirect:/category";
 	}
 
 	@PostMapping("/category/{categoryId}/delete")

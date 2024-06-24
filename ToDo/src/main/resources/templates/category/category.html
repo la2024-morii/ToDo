@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>カテゴリー一覧</title>
+	<meta charset="UTF-8">
+	<title>カテゴリー一覧</title>
 </head>
+
 <body>
-<h1>カテゴリ一覧</h1>
+	<h1>カテゴリ一覧</h1>
 	<a href="/category/add">新規カテゴリー追加</a>
 	<br><br>
 	<table>
@@ -23,11 +25,6 @@
 				</form>
 			</td>
 			<td>
-				<form action="/category/edit" method="get">
-					<button>編集2</button>
-				</form>
-			</td>
-			<td>
 				<form th:action="@{/category/{categoryId}/delete(categoryId=${category.getCategoryId()})}"
 					method="post">
 					<button>削除</button>
@@ -36,4 +33,5 @@
 		</tr>
 	</table>
 </body>
+
 </html>

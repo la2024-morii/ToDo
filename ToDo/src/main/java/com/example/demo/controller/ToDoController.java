@@ -8,14 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.ToDo;
 import com.example.demo.repository.ToDoRepository;
 
 @Controller
-@RequestMapping("/todo")
 public class ToDoController {
 	@Autowired
 	ToDoRepository toDoRepository;
@@ -23,7 +21,7 @@ public class ToDoController {
 	//[GET]"/todo/{categoryId}/"
 	//index()
 	//toDo.html
-	@GetMapping("/{categoryId}")
+	@GetMapping("/todo/{categoryId}")
 	public String index(
 			@PathVariable("categoryId") Integer categoryId,
 			Model model) {
@@ -38,34 +36,35 @@ public class ToDoController {
 	//[POST]"/{categoryId}/{todoId}/check"
 	//check()
 	//redirect/:todo/{caregoryId}
-	@PostMapping("/{categoryId}/{todoId}/check")
+	@PostMapping("/todo/{categoryId}/{todoId}/check")
 	public String check(
 			@PathVariable("categoryId") Integer categoryId,
 			@PathVariable("todoId") Integer todoId,
-			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
-		return "redirect:/{categoryId}";
+		return "redirect:/todo/{categoryId}";
 	}
 
-	@GetMapping("/{categoryId}/add")
+	@GetMapping("todo/{categoryId}/add")
 	public String create(
 			@PathVariable("categoryId")Integer categoryId
 			) {
 		return "todo/addToDo";
 	}
 
-	@PostMapping("/{categoryId}/add")
+	@PostMapping("/todo/{categoryId}/add")
 	public String store(
 			@PathVariable("categoryId")Integer categoryId,
-			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
-		return "redirect:/{categoryId}";
+		ToDo todo = new ToDo(name, categoryId, 1);
+		this.toDoRepository.save(todo);
+		
+		return "redirect:/todo/{categoryId}";
 	}
 
 	//[GET]"/todo/{categoryId}/{todoId}/edit"
 	//	edit()
 	//editToDo.html
-	@GetMapping("/{categoryId}/{todoId}/edit")
+	@GetMapping("/todo/{categoryId}/{todoId}/edit")
 	public String edit(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId,
@@ -78,22 +77,21 @@ public class ToDoController {
 
 	//[POST]"/todo/{categoryId}/{todoId}/edit"
 	//	update()
-	@PostMapping("/{categoryId}/{todoId}/edit")
+	@PostMapping("/todo/{categoryId}/{todoId}/edit")
 	public String update(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId,
 			@RequestParam("name")String name) {
-			ToDo todo = this.toDoRepository.findById(todoId).get();
-			todo.setName(name);
-			this.toDoRepository.save(todo);
+
 		
-		return "redirect:/todo/{categoryId}";
+		return "redirect:/{categoryId}";
+
 
 	}
 
 	//[POST]"/todo/{categoryId}/{todoId}/delete"
 	//	delete()
-	@PostMapping("/{categoryId}/{todoId}/delete")
+	@PostMapping("/todo/{categoryId}/{todoId}/delete")
 	public String delete(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId) {
@@ -104,7 +102,7 @@ public class ToDoController {
 	//[GET]"/todo/{categoryId}/complete"
 	//	complrte()
 	//completeToDo.html
-	@GetMapping("/{categoryId}/complete")
+	@GetMapping("/todo/{categoryId}/complete")
 	public String complete(
 			@PathVariable("categoryId")Integer categoryId,
 //			@RequestParam("categoryName")String categoryName,
