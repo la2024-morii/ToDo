@@ -6,13 +6,15 @@
 </head>
 <body>
 	<h1>ToDoの編集</h1>
-	<form action="/todo/{categortId}/{todoId}/edit" method="post">
+	<form th:action="@{/todo/{categoryId}/{todoId}/edit(categoryId=${todo.getCategoryId()}, todoId=${todo.getTodoId()})}" method="post">
 		
-	<p><input type="text" name="name"></p>
+	<input type="text" name="name">
+	<br>
 	<button>編集</button>
 	</form>
 	
 	<br>
-	<a href="/todo/{categoryId}">戻る</a>
+	<a th:href="@{/todo/{categoryId}(categoryId=${todo.getCategoryId()})}">戻る</a>
+	
 </body>
 </html>

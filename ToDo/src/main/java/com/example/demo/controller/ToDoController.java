@@ -68,7 +68,11 @@ public class ToDoController {
 	@GetMapping("/{categoryId}/{todoId}/edit")
 	public String edit(
 			@PathVariable("categoryId")Integer categoryId,
-			@PathVariable("todoId")Integer todoId) {
+			@PathVariable("todoId")Integer todoId,
+			Model model) {
+		
+		ToDo todo = this.toDoRepository.findById(todoId).get();
+		model.addAttribute("todo", todo);
 		return "todo/editToDo";
 	}
 
@@ -78,9 +82,12 @@ public class ToDoController {
 	public String update(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId,
-			@RequestParam("categoryName")String categoryName,
 			@RequestParam("name")String name) {
-		return "redirect:/{categoryId}";
+			ToDo todo = this.toDoRepository.findById(todoId).get();
+			todo.setName(name);
+			this.toDoRepository.save(todo);
+		
+		return "redirect:/todo/{categoryId}";
 
 	}
 
@@ -90,7 +97,7 @@ public class ToDoController {
 	public String delete(
 			@PathVariable("categoryId")Integer categoryId,
 			@PathVariable("todoId")Integer todoId) {
-		return "redirect:/{categoryId}";
+		return "redirect:/todo/{categoryId}";
 	}
 	//[GET]"/todo/{categoryId}/complete"
 	//	complrte()
