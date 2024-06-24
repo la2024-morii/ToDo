@@ -36,13 +36,13 @@ public class ToDoController {
 	//[POST]"/{categoryId}/{todoId}/check"
 	//check()
 	//redirect/:todo/{caregoryId}
-	@PostMapping("/todo/{categoryId}/{todoId}/check")
+	/*@PostMapping("/todo/{categoryId}/{todoId}/check")
 	public String check(
 			@PathVariable("categoryId") Integer categoryId,
 			@PathVariable("todoId") Integer todoId,
 			@RequestParam("name")String name) {
 		return "redirect:/todo/{categoryId}";
-	}
+	}*/
 
 	@GetMapping("todo/{categoryId}/add")
 	public String create(

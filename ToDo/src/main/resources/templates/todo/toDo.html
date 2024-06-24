@@ -13,8 +13,9 @@
 	<br>
 	<table>
 		<tr th:each="todo : ${todoList}">
-			<td><input type="checkbox" name="checkId" value="1" th:text="${todo.getName()}"></td>
-	
+			<form th:action="@{/todo/{categoryId}/{todoId}/check(categoryId=${todo.getCategoryId()}, todoId=${todo.getTodoId()})}">
+			<td><input type="checkbox" name="checkId" value="2" th:text="${todo.getName()}"></td>
+	</form>
 			
 			<form th:action="@{/todo/{categoryId}/{todoId}/edit(categoryId=${todo.getCategoryId()}, todoId=${todo.getTodoId()})}">	
 			<td><button>編集</button></td>
