@@ -13,8 +13,8 @@
 	<br>
 	<table>
 		<tr th:each="todo : ${todoList}">
-			<td><input type="checkbox" name="checkId" value=""></td>
-			<td th:text="${todo.getName()}"></td>
+			<td><input type="checkbox" name="checkId" value="1" th:text="${todo.getName()}"></td>
+	
 			
 			<form th:action="@{/todo/{categoryId}/{toDoId}/edit(categoryId=${todo.getCategoryId()}, toDoId=${todo.getTodoId()})}">	
 			<td><button>編集</button></td>
@@ -24,11 +24,16 @@
 			<td><button>削除</button></td>
 			</form>
 		</tr>
+	
 	</table>
 	<br>
-	<form action="todo/{categoryId}/add">	
+	
+		
+	<form th:action="@{/todo/{categoryId}/add(categoryId=${categoryId})}">	
 	<button>ToDoの追加</button>
 	</form>
+	
+	
 	
 	
 
