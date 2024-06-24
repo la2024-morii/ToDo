@@ -7,7 +7,7 @@
 <body>
 <h1>ToDo追加</h1>
 
-	<form action="todo/{categoryId}/add" method="post">
+	<form th:action="@{todo/{categoryId}/add(categoryId=${categoryId})}" method="post">
 		
 	<table>
 		<tr>
